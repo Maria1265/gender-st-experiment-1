@@ -7,6 +7,6 @@
     "\\webapp\\styles",
     "\\webapp\\views"
   ],
-  "SelectedNode": "\\webapp\\views\\wrong.html",
+  "SelectedNode": "\\webapp\\scripts\\controllers\\PretestCtrl.js",
   "PreviewInSolutionExplorer": false
 }
