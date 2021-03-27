@@ -8,9 +8,9 @@
     "\\webapp\\assets\\stFemale",
     "\\webapp\\assets\\stFemale\\images",
     "\\webapp\\assets\\stMale",
-    "\\webapp\\assets\\stMale\\images",
-    "\\webapp\\scripts"
+    "\\webapp\\scripts",
+    "\\webapp\\scripts\\controllers"
   ],
-  "SelectedNode": "\\webapp\\scripts\\controllers\\PretestCtrl.js",
+  "SelectedNode": "\\webapp\\assets\\stMale\\images\\badge.png",
   "PreviewInSolutionExplorer": false
 }
