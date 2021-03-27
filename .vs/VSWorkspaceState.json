@@ -2,11 +2,14 @@
   "ExpandedNodes": [
     "",
     "\\webapp",
+    "\\webapp\\assets",
+    "\\webapp\\assets\\default",
+    "\\webapp\\assets\\default\\images",
     "\\webapp\\scripts",
     "\\webapp\\scripts\\controllers",
     "\\webapp\\styles",
     "\\webapp\\views"
   ],
-  "SelectedNode": "\\webapp\\scripts\\controllers\\PretestCtrl.js",
+  "SelectedNode": "\\webapp\\assets\\default\\images\\avatar1.png",
   "PreviewInSolutionExplorer": false
 }
