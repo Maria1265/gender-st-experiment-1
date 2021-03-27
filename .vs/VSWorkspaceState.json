@@ -5,11 +5,12 @@
     "\\webapp\\assets",
     "\\webapp\\assets\\default",
     "\\webapp\\assets\\default\\images",
-    "\\webapp\\scripts",
-    "\\webapp\\scripts\\controllers",
-    "\\webapp\\styles",
-    "\\webapp\\views"
+    "\\webapp\\assets\\stFemale",
+    "\\webapp\\assets\\stFemale\\images",
+    "\\webapp\\assets\\stMale",
+    "\\webapp\\assets\\stMale\\images",
+    "\\webapp\\scripts"
   ],
-  "SelectedNode": "\\webapp\\assets\\default\\images\\avatar1.png",
+  "SelectedNode": "\\webapp\\scripts\\controllers\\PretestCtrl.js",
   "PreviewInSolutionExplorer": false
 }
