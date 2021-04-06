@@ -55,7 +55,7 @@ angular
                     User.setFlowPoints(sum);
                     User.setFlow(ans);
                     User.setEndTime(time);
-                    User.save();
+                    //User.save();
 
                     console.log(User.getResponse());
                     // User.save();

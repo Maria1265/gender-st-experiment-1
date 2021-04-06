@@ -18,7 +18,7 @@
         <div layout="row">
             <md-input-container class="block" flex-gt-sm>
                 <label>Nome</label>
-                <input type="text" name="name" ng-required="true">
+                <input type="text" name="name" ng-required="true" ng-model="name">
             </md-input-container>
 
             <md-input-container class="block" flex-gt-sm>
@@ -29,11 +29,14 @@
             <md-input-container class="block" flex-gt-sm>
                 <label>Estado civil</label>
                 <md-select ng-required="true" ng-model="civilState">
-                    <md-option
-                        ng-repeat="g in ['Solteiro(a)','Casado(a)', 'União estável', 'Divorciado(a)','Viúvo', 'Prefiro não Responder']">
+                    <md-option ng-repeat="g in ['Solteiro(a)','Casado(a)', 'União estável', 'Divorciado(a)','Viúvo', 'Prefiro não Responder']">
                         {{g}}
                     </md-option>
                 </md-select>
+            </md-input-container>
+            <md-input-container class="block" flex-gt-sm>
+                <label>Cidade</label>
+                <input type="text" name="city" ng-required="true" ng-model="city">
             </md-input-container>
         </div>
         <div layout="row">

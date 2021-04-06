@@ -41,11 +41,12 @@ angular
 
       User.setAge($scope.age);
       User.setGender($scope.gender);
-      User.setEmail($scope.email);
+      User.setName($scope.name); 
       User.setEthnicity($scope.ethnicity);
       User.setSexualOrientation($scope.sexualOrientation);
       User.setCivilState($scope.civilState);
       User.setCity($scope.city);
+      User.setEconomicState($scope.economicState); 
       User.setEmail($scope.email);
       User.setWhatsapp($scope.whatsapp);
 

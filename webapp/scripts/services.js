@@ -51,6 +51,7 @@ tutorServices.service("User", function($http) {
         ethnicity: "",
         sexualOrientation: "",
         civilState: "",
+        economicState:"",
         city: "",
         email: "",
         whatsapp:"",
@@ -87,6 +88,9 @@ tutorServices.service("User", function($http) {
     }
     this.setCivilState = function(value) {
         resp.civilState = value;
+    }
+    this.setEconomicState = function (value) {
+        resp.economicState = value;
     }
     this.setCity = function(value) {
         resp.city = value;
@@ -154,7 +158,6 @@ tutorServices.service("User", function($http) {
     this.save = function() {
         $http({
             url: "https://weblab.nees.com.br/jsmmo/save-response",
-           
             dataType: "json",
             method: "POST",
             headers: {
