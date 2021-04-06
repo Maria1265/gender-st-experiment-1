@@ -11,6 +11,6 @@
     "\\webapp\\scripts",
     "\\webapp\\scripts\\controllers"
   ],
-  "SelectedNode": "\\webapp\\assets\\stMale\\images\\badge.png",
+  "SelectedNode": "\\webapp\\scripts\\controllers\\FlowCtrl.js",
   "PreviewInSolutionExplorer": false
 }
