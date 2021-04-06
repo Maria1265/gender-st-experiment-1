@@ -148,11 +148,12 @@ tutorServices.service("User", function($http) {
         resp.endTime = value;
     };
     /** https://weblab.nees.com.br/jsmmo/save-response
+     * http://localhost:8093/save-response
      */
 
     this.save = function() {
         $http({
-            url: "http://localhost:8093/save-response",
+            url: "https://weblab.nees.com.br/jsmmo/save-response",
            
             dataType: "json",
             method: "POST",
