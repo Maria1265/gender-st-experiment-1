@@ -157,7 +157,7 @@ tutorServices.service("User", function($http) {
 
     this.save = function() {
         $http({
-            url: "https://weblab.nees.com.br/jsmmo/save-response",
+            url: "http://localhost:8093/save-response",
             dataType: "json",
             method: "POST",
             headers: {
