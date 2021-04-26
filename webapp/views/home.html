@@ -3,7 +3,7 @@
         <i class="material-icons"> local_play </i>
         <span>Etapa II - Tutor</span>
         <div flex layout="row" layout-align="end center">
-            <label layout-margin layout-padding>Gil</label>
+            <label layout-margin layout-padding>Você</label>
             <img ng-src="{{getAvatar()}}" class="profile" width="50px">
         </div>
     </md-toolbar>
@@ -48,6 +48,23 @@
             </md-content>
         </div>
         <div layout="column" flex="50" layout-margin layout-padding>
+
+            <md-card layout="column" layout-align="center left" layout-padding ng-show="showBoost">
+                <img ng-src="{{getBoostImage()}}" class="md-card-image">
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">{{getBoostTitle()}}</span>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-content>
+                    <p>{{getBoostContent()}}</p>
+                    <a href="{{getBoostHref()}}" target="_blank">Veia mais em ...</a>
+                </md-card-content>        
+                <div layout="column" layout-align="center center" layout-margin layout-padding>
+                    <md-button ng-click="hideBoost()" class="md-primary md-raised">Continuar</md-button>
+                </div>
+            </md-card>
+
             <md-card layout="column" layout-align="center left" layout-padding ng-show="showAvatar">
                 <div>
                     <h3>1 - Personalize!  </h3>
@@ -65,9 +82,10 @@
                     </md-card>
                 </div>
                 <div layout="column" layout-align="center center" layout-margin layout-padding>
-                    <md-button ng-click="hideAvatar()" class="md-primary md-raised">Pronto! Continuar.</md-button>
+                    <md-button ng-click="hideAvatar()" class="md-primary md-raised">Pronto! Continuar</md-button>
                 </div>
             </md-card>
+
             <md-card layout="column" layout-align="center left " layout-padding ng-show="showQuestions">
                 <h3>2 - Responda!</h3>
                 <label layout-padding layout-margin>Responda as questões abaixo para ganhar pontos, trofeus e atingir uma melhor posição no ranking!
@@ -87,6 +105,7 @@
                     <span class="text-light"><b>{{getMessage()}}</b></span>
                 </div>
             </md-card>
+
             <div ng-if="!checkSet1()" layout="row" layout-align="center center" class="md-primary md-raised">
                 <md-card layout="column" layout-align="center left" class="md-primary" layout-padding>
                     <h3>Etapa finalizada!</h3>

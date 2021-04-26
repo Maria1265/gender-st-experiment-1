@@ -1,7 +1,14 @@
-angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDialog, configService, User) {
+
+angular.module('tutor').controller("HomeCtrl",
+    function($scope, $location, $window, $mdDialog, configService, User) {
     console.log("HomeCtrl ok");
-
-
+    User.setStartTime(Date.now());
+    
+    var params = $location.search();
+    if (params == undefined || params.respId == undefined || params.respId.replace(/\s/g,'') == '') {
+        $window.location.href = '/pre';
+    }
+    
     var answers = ['B', 'E', 'E', 'E', 'A', 'B', 'D', 'E', 'B', 'B', 'E', 'B', 'C', 'E', 'A', 'C', 'B', 'D', 'B', 'A'];
     var userAnswer = null;
     var totalPoints = 0;
@@ -16,7 +23,7 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
 
     var bgColor = "white";
 
-    var currentMessage = "Correto!"
+    var currentMessage = "Correto!";
     var flagMessage = false;
 
     var levelFiveFlag = true;
@@ -39,7 +46,7 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
         points: 7,
         avatar: "assets/" + configService.getTheme() + "/images/ranking4.png"
     }, {
-        name: "Gil",
+        name: "Você",
         points: totalPoints,
         avatar: userAvatar
     }];
@@ -53,18 +60,45 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
     $scope.increment = false;
     $scope.decrement = false;
 
+    $scope.showBoost = false;
     $scope.showAvatar = true;
-
     $scope.showQuestions = false;
-
+    if (configService.getBoost() != "none") {
+        $scope.showBoost = true;
+        $scope.showAvatar = false;
+    }
+    
     $scope.getUserColor = function(name) {
-        if (name == "Alex")
+        if (name == "Alex") {
             return "#e0e0e0";
+        }
         return "white";
     };
+
     $scope.getBgColor = function() {
         return bgColor;
     };
+
+    $scope.getBoostImage = function() {
+        return configService.getBoostImage();
+    }
+
+    $scope.getBoostTitle = function() {
+        return configService.getBoostTitle();
+    }
+
+    $scope.getBoostContent = function() {
+        return configService.getBoostContent();
+    }
+
+    $scope.getBoostHref = function() {
+        return configService.getBoostHref();
+    }
+    
+    $scope.hideBoost = function() {
+        $scope.showBoost = false;
+        $scope.showAvatar = true;
+    }
 
     $scope.hideAvatar = function() {
         $scope.showAvatar = false;
@@ -90,19 +124,20 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
         for (var i = 0; i < num; i++) {
             array.push(i);
         };
-
         return array;
     };
 
     $scope.getBar = function() {
         return "assets/" + configService.getTheme() + "/images/bar.png";
-
     };
 
     $scope.checkSet1 = function() {
         return showSet1;
     };
 
+    $scope.checkBoost = function() {
+        return !$scope.showBoost;
+    };
 
     $scope.checkAvatar = function() {
         return !$scope.showAvatar;
@@ -117,33 +152,41 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
     };
 
     $scope.showPosttest = function() {
-        $location.path("/posttest");
+        var params = $location.search();
+        if (params == undefined || params.respId == undefined ||
+            params.respId.replace(/\s/g,'') == '') {
+            $window.location.href = '/pre';
+        }
+        
+        User.setRespId(params.respId);
+        User.setActivityPoints(totalPoints);
+        User.setStType(configService.getTheme());
+        User.setBoost(configService.getBoost());
+        User.setEndTime(Date.now());
+
+        User.save(function() {
+            console.log('win.location.href:: '+'/pos/'+params.respId);
+            $window.location.href = '/pos/'+params.respId;
+        });
     };
 
     $scope.getStars = function() {
-
         if (configService.nextOn) {
             return "star";
         }
-
         return "star_border";
     };
 
     $scope.getRanking = function(value) {
         return users[value].avatar;
-
     };
 
     var checkBadge = function(index) {
-
         return configService.getBadges()[index];
     };
 
-
     $scope.getBadge = function(name) {
-
         var id = 0;
-
         switch (name) {
             case "badge5":
                 id = 0;
@@ -158,10 +201,8 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
                 console.log("invalid badge name");
         }
 
-
         var flag = checkBadge(id) ? name : "noBadge";
-
-        //  console.log("flag: " + flag + " check: " + checkBadge(id));
+        console.log("flag: " + flag + " check: " + checkBadge(id));
 
         return "assets/" + configService.getTheme() + "/images/" + flag + ".png";
     };
@@ -179,7 +220,6 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
     };
 
     $scope.getPoints = function() {
-
         return totalPoints;
     };
 
@@ -207,27 +247,23 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
     };
 
     $scope.getUserPoints = function(index) {
-
         return users[index].points;
     };
 
     var setMsgType = function(type) {
-
         if (type == "red") {
-            currentMessage = "Resposta Errada!"
+            currentMessage = "Resposta Errada!";
         } else {
-            currentMessage = "Resposta Certa!"
+            currentMessage = "Resposta Certa!";
         };
     };
 
     var playAnimation = function(type) {
-
         console.log("playing animation: " + type);
-
 
         bgColor = type;
         flagMessage = true;
-
+        
         setMsgType(type);
 
         setTimeout(function() {
@@ -273,7 +309,7 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
             points: 7,
             avatar: "assets/" + configService.getTheme() + "/images/ranking4.png"
         }, {
-            name: "Gil",
+            name: "Você",
             points: totalPoints,
             avatar: userAvatar
         }];
@@ -289,8 +325,6 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
             $scope.decrement = false;
             $scope.increment = false;
         }, 1000);
-
-
     };
 
     $scope.getMessage = function() {
@@ -329,7 +363,6 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
                     $mdDialog.hide();
                 }, 2000);
 
-
             } else if (totalPoints == 10 && levelTenFlag) {
                 levelTenFlag = false;
                 $mdDialog.show({
@@ -363,8 +396,6 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
                 }, 2500);
             };
 
-
-
         } else if (currentQuestion == 19) {
 
             playAnimation("red");
@@ -391,7 +422,9 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
         currentQuestion++;
         $scope.progress = 100 * (currentQuestion + 1) / 20;
         $scope.question = function() {
-            return "assets/" + configService.getTheme() + "/images/q-" + currentQuestion + ".png";
+            if (currentQuestion < 20) {
+                return "assets/" + configService.getTheme() + "/images/q-" + currentQuestion + ".png";
+            }
         };
 
         if (currentQuestion >= 20) {
@@ -409,4 +442,5 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
         };
 
     };
+    
 });

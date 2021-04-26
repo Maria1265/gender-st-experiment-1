@@ -1,9 +1,11 @@
 {
-  "name": "gender_stereotype_experiment",
+  "name": "gender_stereotype_boost_experiment",
   "version": "1.0.0",
-  "description": "This project comprises an experimental environment to study the impact of gender stereotype threat in student anxiety",
+  "description": "This project comprises an experimental environment to study the impact of gender stereotype boost",
   "dependencies": {
     "express": "*",
+    "body-parser": "*",
+    "fs": "*",
     "uuid": "*"
   },
   "engine": "node >=0.6.x",
@@ -13,12 +15,7 @@
   "main": "server.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/josmarios/gender-st-frontend"
+    "url": "https://github.com/Maria1265/gender-st-experiment-1"
   },
-  "author": "Josmario Albuquerque",
-  "license": "MIT",
-  "bugs": {
-    "url": ""
-  },
-  "homepage": ""
+  "license": "MIT"
 }
