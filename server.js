@@ -25,11 +25,11 @@ app.get('/pos(/:respId)?', function (req, res) {
             res.redirect('https://form.jotform.com/211166070120640?respId='+respId);
         } else {
             console.log('Empty respId');
-            res.redirect('/pre');
+            res.redirect('/maria/pre');
         }
     } else {
         console.log('Missing :respId in /pos/:respId');
-        res.redirect('/pre');
+        res.redirect('/maria/pre');
     }
 });
 
@@ -39,8 +39,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.post('/save-response/:respId', function(req, res, next) {
     var respId = req.params.respId;
     if (respId == undefined || respId.replace(/\s/g,'') == '' || !respId) {
-        console.log('Missing /save-response/:respId');
-        res.redirect('/pre');
+        console.log('Missing /maria/save-response/:respId');
+        res.redirect('/maria/pre');
     }
     
     // data to be saved (participant's response)

@@ -189,7 +189,7 @@ tutorServices.service("User", function($http) {
 
     this.save = function(fcallback) {
         $http({
-            url: "/save-response/"+resp.id,
+            url: "/maria/save-response/"+resp.id,
             dataType: "json",
             method: "POST",
             headers: {

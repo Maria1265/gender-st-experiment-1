@@ -6,7 +6,7 @@ angular.module('tutor').controller("HomeCtrl",
     
     var params = $location.search();
     if (params == undefined || params.respId == undefined || params.respId.replace(/\s/g,'') == '') {
-        $window.location.href = '/pre';
+        $window.location.href = '/maria/pre';
     }
     
     var answers = ['B', 'E', 'E', 'E', 'A', 'B', 'D', 'E', 'B', 'B', 'E', 'B', 'C', 'E', 'A', 'C', 'B', 'D', 'B', 'A'];
@@ -155,7 +155,7 @@ angular.module('tutor').controller("HomeCtrl",
         var params = $location.search();
         if (params == undefined || params.respId == undefined ||
             params.respId.replace(/\s/g,'') == '') {
-            $window.location.href = '/pre';
+            $window.location.href = '/maria/pre';
         }
         
         User.setRespId(params.respId);
@@ -165,8 +165,8 @@ angular.module('tutor').controller("HomeCtrl",
         User.setEndTime(Date.now());
 
         User.save(function() {
-            console.log('win.location.href:: '+'/pos/'+params.respId);
-            $window.location.href = '/pos/'+params.respId;
+            console.log('win.location.href:: '+'/maria/pos/'+params.respId);
+            $window.location.href = '/maria/pos/'+params.respId;
         });
     };
 
