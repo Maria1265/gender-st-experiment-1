@@ -14,7 +14,7 @@ app.get('/pre(/:respId)?', function (req, res) {
     if (respId == undefined || respId == '' || !respId) {
         respId = uuid.v1();
     }
-    res.redirect('https://form.jotform.com/211162337868055?respId='+respId);
+    res.redirect('https://form.jotform.com/211227025819653?respId='+respId);
 });
 
 app.get('/pos(/:respId)?', function (req, res) {
@@ -22,7 +22,7 @@ app.get('/pos(/:respId)?', function (req, res) {
     if (respId != undefined) {
         respId = respId.replace(/\s/g,'');
         if (respId != '' && respId) {
-            res.redirect('https://form.jotform.com/211166070120640?respId='+respId);
+            res.redirect('https://form.jotform.com/211226686939668?respId='+respId);
         } else {
             console.log('Empty respId');
             res.redirect('/maria/pre');
